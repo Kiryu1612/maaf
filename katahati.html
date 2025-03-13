@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Final</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400;700&display=swap');
+        
+        body {
+            background: linear-gradient(to bottom, #003366, #006699, #0099cc);
+            color: #bbb;
+            font-family: Arial, sans-serif;
+            text-align: center;
+            padding: 50px;
+            overflow: hidden;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+            height: 100vh;
+            position: relative;
+        }
+        .date-header {
+            font-size: 32px;
+            font-weight: bold;
+            color: #ccc;
+            margin-bottom: 20px;
+        }
+        .container {
+            max-width: 800px;
+            margin: auto;
+            background: rgba(34, 34, 34, 0.8);
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(255, 255, 255, 0.1);
+            position: relative;
+            z-index: 10;
+            display: flex;
+            align-items: center;
+            text-align: left;
+            margin-bottom: 20px;
+        }
+        .image-container {
+            flex: 1;
+            padding-right: 20px;
+        }
+        .image-container img {
+            max-width: 100%;
+            border-radius: 10px;
+        }
+        .text-container {
+            flex: 2;
+            font-size: 25px;
+            min-height: 50px;
+            font-family: 'Dancing Script', cursive;
+        }
+        h1 {
+            color: #ddd;
+            font-size: 64px;
+            font-weight: bold;
+            margin-bottom: 20px;
+            text-align: center;
+        }
+        p {
+            font-size: 30px;
+            white-space: nowrap;
+            overflow: hidden;
+            border-right: 3px solid transparent;
+            display: inline-block;
+        }
+        .btn {
+            display: inline-block;
+            background: #444;
+            color: #ddd;
+            padding: 10px 20px;
+            text-decoration: none;
+            border-radius: 5px;
+            margin-top: 20px;
+            transition: 0.3s;
+        }
+        .btn:hover {
+            background: #666;
+        }
+        .date {
+            position: fixed;
+            bottom: 10px;
+            right: 10px;
+            color: #bbb;
+            font-size: 16px;
+            background: rgba(0, 0, 0, 0.5);
+            padding: 5px 10px;
+            border-radius: 5px;
+        }
+        /* Animasi gelembung */
+        .bubbles {
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 100vh;
+            pointer-events: none;
+            z-index: 1;
+        }
+        .bubble {
+            position: absolute;
+            width: 10px;
+            height: 10px;
+            background: rgba(255, 255, 255, 0.5);
+            border-radius: 50%;
+            opacity: 0.6;
+            animation: bubble-animation linear infinite;
+        }
+        @keyframes bubble-animation {
+            from {
+                transform: translateY(100vh);
+                opacity: 0.6;
+            }
+            to {
+                transform: translateY(-10vh);
+                opacity: 0;
+            }
+        }
+    </style>
+</head>
+<body>
+    <audio autoplay loop>
+        <source src="musik/Titanic  My heart will go on Instrumental HQ.mp3" type="audio/mpeg">
+    </audio>
+    <div class="bubbles"></div>
+    <div class="date-header">Kamis, 13 Maret 2025</div>
+    
+    <div class="content">
+        <div class="container">
+            <div class="image-container">
+                <img src="cerita/189ade79-671c-4671-afc1--removebg-preview.png" alt="Gambar Cerita">
+            </div>
+            <div class="text-container" id="text1"></div>
+        </div>
+    </div>
+    
+    <div class="date" id="dateDisplay"></div>
+    <script>
+        function createBubbles() {
+            const bubbleContainer = document.querySelector(".bubbles");
+            for (let i = 0; i < 50; i++) {
+                let bubble = document.createElement("div");
+                bubble.classList.add("bubble");
+                bubble.style.left = Math.random() * 100 + "vw";
+                bubble.style.width = bubble.style.height = Math.random() * 15 + 5 + "px";
+                bubble.style.animationDuration = (Math.random() * 3 + 2) + "s";
+                bubble.style.animationDelay = Math.random() * 2 + "s";
+                bubbleContainer.appendChild(bubble);
+            }
+        }
+        createBubbles();
+
+        function typeWriter(elementId, text, speed) {
+            let i = 0;
+            function typing() {
+                if (i < text.length) {
+                    document.getElementById(elementId).innerHTML += text.charAt(i);
+                    i++;
+                    setTimeout(typing, speed);
+                }
+            }
+            typing();
+        }
+        
+        typeWriter("text1", "Sayang mas sangat sayang banget sama dirimu, rasa sayang rasa cinta ini sangat dalam buat kamu, mas ga tau harus apa bila tidak ada kamu, kamulah hatimas, everything akan mas lakukan buat dirimu hanya dirimu, mas janji akan selalu mencintaimu menyayangimu seumur hidup mas ini, everything yang mas lakukan bila ga ada dirimu rasanya hambar banget, perasaan sepi,sedih datang terus, for the real mas bener bener membutuhkan dirimu sayang maafkan mas bila barangkali pernah membuat dirimu sedih, atau sayang jdi kepikiran terus, hati mas akan selalu ada bersama kamu sayang my heart will Go On With You Salza Seshazilla cause youre the woman that i love with my best, i spend my love for you everything feel, time and thoughts. I Love You for a thousand Year Sayang", 100);
+    </script>
+</body>
+</html>
